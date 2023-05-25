@@ -1,14 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApplication21
+namespace array
 {
     class Program
     {
-        public static void ArrMeth(string[] arr)
+        public static void ArrayDealer(Array arr)
         {
             char k = 'g';
             while (k != '0')
@@ -33,12 +34,12 @@ namespace ConsoleApplication21
                     Array.Sort(arr, 0, n - 1);
                     for (int i = 0; i < n; i++)
                     {
-                        Console.Write(arr[i]);
+                        Console.Write(arr.GetValue(i));
                         Console.Write(" ");
                     }
                     Console.ReadKey();
                 }
-                else if ( k == '2')
+                else if (k == '2')
                 {
                     Console.Clear();
                     Console.WriteLine("введите элемент");
@@ -53,7 +54,7 @@ namespace ConsoleApplication21
                     Array.Copy(arr, 0, a, 0, n);
                     for (int i = 0; i < n; i++)
                     {
-                        Console.Write(arr[i]);
+                        Console.Write(arr.GetValue(i));
                         Console.Write(" ");
                     }
                     for (int i = 0; i < n; i++)
@@ -67,14 +68,14 @@ namespace ConsoleApplication21
                 {
                     Console.Clear();
                     Console.WriteLine("введите элемент");
-                    Console.WriteLine(Array.IndexOf(arr, int.Parse(Console.ReadLine())));
+                    Console.WriteLine(Array.IndexOf(arr, Console.ReadLine()));
                     Console.ReadKey();
                 }
                 else if (k == '5')
                 {
                     Console.Clear();
                     Console.WriteLine("введите элемент");
-                    Console.WriteLine(Array.LastIndexOf(arr, int.Parse(Console.ReadLine())));
+                    Console.WriteLine(Array.LastIndexOf(arr, Console.ReadLine()));
                     Console.ReadKey();
                 }
                 else if (k == '6')
@@ -96,7 +97,7 @@ namespace ConsoleApplication21
                     Array.Reverse(arr);
                     for (int i = 0; i < n; i++)
                     {
-                        Console.Write(arr[i]);
+                        Console.Write(arr.GetValue(i));
                         Console.Write(" ");
                     }
                     Console.ReadKey();
@@ -107,7 +108,7 @@ namespace ConsoleApplication21
                     Array.Clear(arr, 0, n);
                     for (int i = 0; i < n; i++)
                     {
-                        Console.Write(arr[i]);
+                        Console.Write(arr.GetValue(i));
                         Console.Write(" ");
                     }
                     Console.ReadKey();
@@ -115,7 +116,7 @@ namespace ConsoleApplication21
                 else if (k == 'a')
                 {
                     Console.Clear();
-                    
+
                     Console.ReadKey();
                 }
                 else if (k == '0')
@@ -125,7 +126,7 @@ namespace ConsoleApplication21
                 }
 
             }
-            
+
 
         }
         static void Main(string[] args)
@@ -134,15 +135,9 @@ namespace ConsoleApplication21
             {
                 Console.Clear();
                 int a = int.Parse(Console.ReadLine());
-                Array arr = new string[a];
-                Console.WriteLine("введите массив");
-                for (int i = 0; i < a; i++)
-                {
-                    arr[i] = Console.ReadLine();
-                }
-                ArrMeth(arr);
-                
-
+                var arr = Array.CreateInstance(typeof(string), a);
+                arr = new string[] { "example1", "example2" };
+                ArrayDealer(arr);
             }
         }
     }
